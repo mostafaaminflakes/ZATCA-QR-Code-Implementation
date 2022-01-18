@@ -29,6 +29,10 @@ $ php artisan key:generate
 $ php artisan serve
 ```
 
+## Reading the QR Code information
+
+You can read the QR Code information using [E-Invoice QR Reader KSA](https://play.google.com/store/apps/details?id=com.posbankbh.einvoiceqrreader). It's designed to display the QR Code contents of any E-Invoice that is compliant with the Zakat and Tax Authority in Saudi Arabia.
+
 ## Contributions
 
 For bug reports or feature requests, please share them with us [here](https://github.com/mostafaaminflakes/ZATCA-QR-Code-Implementation/issues).
