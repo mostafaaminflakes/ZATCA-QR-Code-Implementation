@@ -12,7 +12,8 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "salla/zatca": "^2.0"
+        "salla/zatca": "^2.0",
+        "yajra/laravel-oci8": "^8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
