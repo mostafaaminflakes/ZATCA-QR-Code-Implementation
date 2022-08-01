@@ -14,6 +14,7 @@ class ParCodeSeeder extends Seeder
      */
     public function run()
     {
+        \App\Models\Par_code::factory(10)->create();
         // DB::table('Par_codes')->insert([
         //     'Company_name' => Str::random(10),
         //     'reqistration_id' => int::random(10),

@@ -15,7 +15,7 @@ class CreateParCodesTable extends Migration
     public function up()
     {
         Schema::create('par_codes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('Company_name','300'); //  إسم الشركة 
             $table->string('reqistration_id')->notnull(); // الرقم الضريبي
             $table->string('tax_id'); // الرقم الضريبي
