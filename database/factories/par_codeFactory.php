@@ -15,7 +15,7 @@ class par_codeFactory extends Factory
     {
         return [
                 'inv'=>$this->faker->randomDigit(10),
-                'Company_name' => $this->faker->Company(),
+                'company_name' => $this->faker->word(),
                 'reqistration_id' => $this->faker->randomDigit(),
                 'tax_id' => $this->faker->randomDigit(),
                 'print_time' => $this->faker->date('Y_m_d'),

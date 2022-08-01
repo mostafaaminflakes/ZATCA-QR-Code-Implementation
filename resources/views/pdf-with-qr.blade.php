@@ -9,7 +9,7 @@
 
 <body>
 
-    <h1>{{ $seller_name }}</h1>
+    <h1>this is {{ $company_name }} with id {{$id}}</h1>
 
     <p>{!! $par_code!!}</p>
     <p>{{ $invoice_date }}</p>

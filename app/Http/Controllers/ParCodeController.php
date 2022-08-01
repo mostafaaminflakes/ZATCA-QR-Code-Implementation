@@ -24,10 +24,10 @@ class ParCodeController extends Controller
         
         $salla =new SallaController();
 
-        $par_code= Par_code::first();
+        $par_code=  $artikel =  Par_code::where('id', '4')->first();
 
         $qr_code=[
-            'seller_name'=>$par_code->Company_name,
+            'seller_name'=>$par_code->company_name,
             'vat_number'=>$par_code->tax_id,
             'invoice_date'=>$par_code->print_time,
             'total_amount'=>$par_code->tot_vat,
@@ -36,8 +36,9 @@ class ParCodeController extends Controller
     ];
     $qr = $salla->render($qr_code);
     $data=[
+        'id'=>$par_code->id,
         'par_code'=>$this->qr_code($qr),
-        'seller_name'=>$par_code->Company_name,
+        'company_name'=>$par_code->company_name,
         'vat_number'=>$par_code->tax_id,
         'invoice_date'=>$par_code->print_time,
         'total_amount'=>$par_code->tot_vat,
