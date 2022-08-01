@@ -9,7 +9,7 @@ class Par_code extends Model
 {
     use HasFactory;
      private$filable=[
-     'Company_name' ,
+        'company_name' ,
          'reqistration_id',
         'tax_id' ,
          'print_time',
