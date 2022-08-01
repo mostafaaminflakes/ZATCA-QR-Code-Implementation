@@ -1,6 +1,5 @@
 <?php
 
-use Dompdf\FrameDecorator\Text;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +14,7 @@ class CreateParCodesTable extends Migration
     public function up()
     {
         Schema::create('par_codes', function (Blueprint $table) {
+
             $table->increments('id');
             $table->string('Company_name','300'); //  إسم الشركة 
             $table->string('reqistration_id')->notnull(); // الرقم الضريبي
@@ -24,6 +24,7 @@ class CreateParCodesTable extends Migration
             $table->float('vat'); // -- قيمة ضريبة االفاتورة
             $table->string('inv','20'); //-- رقم الفاتورة
             $table->string('printed_time') ;//-- فلاك للتميز
+
             $table->timestamps();
         });
     }
