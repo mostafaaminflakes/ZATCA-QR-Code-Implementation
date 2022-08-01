@@ -14,7 +14,7 @@ class ParCodeController extends Controller
      */
     public function index()
     {
-        //
+        return dd('done');
     }
 
     /**
