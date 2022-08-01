@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use PDF;
 use App\Models\Par_code;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SallaController;
@@ -26,18 +26,28 @@ class ParCodeController extends Controller
 
         $par_code= Par_code::first();
 
-        $data=[
+        $qr_code=[
             'seller_name'=>$par_code->Company_name,
             'vat_number'=>$par_code->tax_id,
             'invoice_date'=>$par_code->print_time,
             'total_amount'=>$par_code->tot_vat,
             'vat_amount'=>$par_code->tot_vat,
-    
+            
+    ];
+    $qr = $salla->render($qr_code);
+    $data=[
+        'par_code'=>$this->qr_code($qr),
+        'seller_name'=>$par_code->Company_name,
+        'vat_number'=>$par_code->tax_id,
+        'invoice_date'=>$par_code->print_time,
+        'total_amount'=>$par_code->tot_vat,
+        'vat_amount'=>$par_code->tot_vat,
     ];
         
-        $qr = $salla->render($data);
-        
-        return dd($qr);
+       
+
+        $pdf = PDF::loadView('pdf-with-qr', $data);
+        return $pdf->download('test.pdf');
 
     }
 
@@ -106,8 +116,8 @@ class ParCodeController extends Controller
     {
         //
     }
-    public function qr_code(Par_code $par_code)
+    public function qr_code($code)
     {
-        
+        return '<img style="width: 200px;" src="' . $code . '" alt="QR Code" />';
     }
 }
