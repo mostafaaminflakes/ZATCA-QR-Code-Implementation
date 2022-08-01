@@ -72,13 +72,13 @@ class QRController extends Controller
         return redirect()->route('qr-form')->with('file_url', $this->image_html($this->temporary_image_file_path));
     }
 
-    public function pdf_file_with_image()
+    public function pdf_file_with_image($data)
     {
-        $data = [
+     $data = [
             'title' => 'Invoice number: IN-123456789',
             'date' => date('m/d/Y'),
             'qr_image' => $this->image_html($this->base64_image_string),
-        ];
+         ];
 
         // First method
         // $pdf = \App::make('dompdf.wrapper');

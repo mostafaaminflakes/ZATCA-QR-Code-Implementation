@@ -3,14 +3,17 @@
 <html>
 
 <head>
-    <title>{{ $title }}</title>
+    <title>pdf test</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
-    <h1>{{ $title }}</h1>
-    <p>{{ $date }}</p>
-    <p>{!! $qr_image !!}</p>
+
+    <h1>{{ $seller_name }}</h1>
+
+    <p>{!! $par_code!!}</p>
+    <p>{{ $invoice_date }}</p>
+    <p>{{$total_amount}}</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
