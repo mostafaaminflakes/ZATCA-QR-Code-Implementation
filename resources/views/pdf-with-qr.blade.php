@@ -16,5 +16,10 @@
     <p>{{$total_amount}}</p>
     <p>yes It worked</p>
 </body>
+<script>
+    $(window).ready(function () {
+    window.print();
+    })
+</script>
 
 </html>

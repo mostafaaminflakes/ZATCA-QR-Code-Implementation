@@ -5,6 +5,10 @@ use PDF;
 use App\Models\Par_code;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SallaController;
+use Smalot\Cups\Builder\Builder;
+use Smalot\Cups\Manager\PrinterManager;
+use Smalot\Cups\Transport\Client;
+use Smalot\Cups\Transport\ResponseParser;
 class ParCodeController extends Controller
 {
     
@@ -24,7 +28,7 @@ class ParCodeController extends Controller
         
         $salla =new SallaController();
 
-        $par_code=  $artikel =  Par_code::where('id', '4')->first();
+        $par_code =  Par_code::where('id', '4')->first();
 
         $qr_code=[
             'seller_name'=>$par_code->company_name,
@@ -48,8 +52,10 @@ class ParCodeController extends Controller
        
 
         $pdf = PDF::loadView('pdf-with-qr', $data);
-        return $pdf->download('test.pdf');
-
+        // $pdf->download(storage_path().'/invoices');
+        return $pdf->stream('test.pdf');
+       
+         
     }
 
     /**
@@ -59,7 +65,22 @@ class ParCodeController extends Controller
      */
     public function create()
     {
-        //
+        $qr='';
+        
+        $salla =new SallaController();
+
+        $par_code =  Par_code::where('id', '4')->first();
+
+        $qr_code=[
+            'seller_name'=>$par_code->company_name,
+            'vat_number'=>$par_code->tax_id,
+            'invoice_date'=>$par_code->print_time,
+            'total_amount'=>$par_code->tot_vat,
+            'vat_amount'=>$par_code->tot_vat,
+            
+    ];
+    $qr = $salla->render($qr_code);
+    //    return  $this->qr_code($qr)->download('test.png');
     }
 
     /**
@@ -120,5 +141,15 @@ class ParCodeController extends Controller
     public function qr_code($code)
     {
         return '<img style="width: 200px;" src="' . $code . '" alt="QR Code" />';
+    }
+
+    public function printer(){
+        $client = new Client();
+$builder = new Builder();
+$responseParser = new ResponseParser();
+
+$printerManager = new PrinterManager($builder, $client, $responseParser);
+$printers = $printerManager->getList();
+return dd($printers);
     }
 }
